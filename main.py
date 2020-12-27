@@ -52,6 +52,15 @@ def on_button_pressed_b():
     if x > 4:
         x = 4
 
+def restart():
+    global x, y, matrix, end
+    end = 0
+    y = 0
+    x = 0
+    matrix = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]] 
+    on_forever()
+    
 input.on_button_pressed(Button.A, on_button_pressed_a)
 input.on_button_pressed(Button.B, on_button_pressed_b)
+input.on_button_pressed(Button.AB, restart)
 basic.forever(on_forever)

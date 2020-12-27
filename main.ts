@@ -26,23 +26,7 @@ function end_of_game() {
     basic.showIcon(IconNames.Sad)
 }
 
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
-    
-    x = x - 1
-    if (x < 0) {
-        x = 0
-    }
-    
-})
-input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    
-    x = x + 1
-    if (x > 4) {
-        x = 4
-    }
-    
-})
-basic.forever(function on_forever() {
+function on_forever() {
     
     if (end == 1) {
         end_of_game()
@@ -65,4 +49,30 @@ basic.forever(function on_forever() {
         }
     }
     
+}
+
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    
+    x = x - 1
+    if (x < 0) {
+        x = 0
+    }
+    
 })
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    
+    x = x + 1
+    if (x > 4) {
+        x = 4
+    }
+    
+})
+input.onButtonPressed(Button.AB, function restart() {
+    
+    end = 0
+    y = 0
+    x = 0
+    matrix = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+    on_forever()
+})
+basic.forever(on_forever)
